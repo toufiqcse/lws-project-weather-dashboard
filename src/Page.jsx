@@ -51,6 +51,10 @@ const Page = () => {
         setClimateImage(climateBg)
     }, [weatherData.climate]);
 
+
+
+
+
     return (
         <>
             {
