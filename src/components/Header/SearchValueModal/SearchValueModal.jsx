@@ -1,27 +1,17 @@
 import { useContext } from 'react';
-import { LocationContext } from '../../../context';
+import { LocationContext, SearchContext } from '../../../context';
 import getLocationByName from '../../../data/location-data';
 
 
 
-const SearchValueModal = ({ filteredData, searchTerm }) => {
-    const { setSelectedLocation } = useContext(LocationContext)
+const SearchValueModal = () => {
+    const { setSelectedLocation } = useContext(LocationContext);
+    const { filteredData } = useContext(SearchContext);
 
-
-
-
-    // under develop
-
-    const handleLocationFind = () => {
-        const fetchedLocations = [];
-        for (let i = 0; i < filteredData.length; i++) {
-            const fetchedLocation = getLocationByName(filteredData[i].location);
-            fetchedLocations.push(fetchedLocation);
-            setSelectedLocation({ ...fetchedLocation })
-        }
+    const handleLocationFind = (location) => {
+        const fetchedLocation = getLocationByName(location);
+        setSelectedLocation({ ...fetchedLocation })
     }
-
-
 
     return (
         <div className="max-w-2xl py-4 bg-white rounded-md border-gray-500 absolute right-24 top-12 text-black shadow-lg ">
@@ -29,7 +19,12 @@ const SearchValueModal = ({ filteredData, searchTerm }) => {
             <ul className="space-y-2 mt-4 *:py-2 *:px-4 *:cursor-pointer">
                 {
                     filteredData.map((data) => (
-                        <li key={data.longitude} className="hover:bg-gray-200" onClick={handleLocationFind} >{data.location}</li>
+                        <li
+                            key={data.longitude}
+                            className="hover:bg-gray-200"
+                            onClick={() => handleLocationFind(data.location)}>
+                            {data.location}
+                        </li>
                     ))
                 }
             </ul>

@@ -1,33 +1,21 @@
-import { useContext, useEffect, useState } from 'react';
-import districtData from '../../../../public/data';
+import { useContext } from 'react';
 import searchIcon from '../../../assets/search.svg';
-import { LocationContext } from '../../../context';
+import { LocationContext, SearchContext } from '../../../context';
 import getLocationByName from '../../../data/location-data';
 import SearchValueModal from '../SearchValueModal/SearchValueModal';
 
 
 const SearchWeather = () => {
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filteredData, setFilteredData] = useState([]);
-    const { setSelectedLocation } = useContext(LocationContext)  //get the search result by context
+    const { setSelectedLocation } = useContext(LocationContext)  //get the search result by context for updater function
+    const { searchText, handleSearchTextChange, filteredData } = useContext(SearchContext);
 
-    useEffect(() => {
-        if (searchTerm) {
-            const results = districtData.filter(item =>
-                item.location.toLowerCase().includes(searchTerm.toLowerCase()));
-            setFilteredData(results);
-        } else {
-            setFilteredData([])
-        }
-    }, [searchTerm])
-
-
-
-    const handleChange = (e) => {
-        const value = e.target.value;
-        setSearchTerm(value)
-        // setShowSearchModal(value.length > 0)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const fetchedLocation = getLocationByName(searchText);   //pass the search text to the districtData JSON by getLocationByName()
+        setSelectedLocation({ ...fetchedLocation })
     }
+
+    // For debounce
     // const doSearch = useDebounce((searchText) => {
     //     const fetchedLocation = getLocationByName(searchText);   //pass the search text to the Data JSON by getLocationByName()
     //     setSelectedLocation({ ...fetchedLocation })
@@ -37,11 +25,6 @@ const SearchWeather = () => {
     //     const value = e.target.value;
     //     doSearch(value)
     // }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const fetchedLocation = getLocationByName(searchTerm);   //pass the search text to the Data JSON by getLocationByName()
-        setSelectedLocation({ ...fetchedLocation })
-    }
 
     return (
         <form action="#" onSubmit={handleSubmit}>
@@ -51,8 +34,8 @@ const SearchWeather = () => {
                     type="search"
                     placeholder="Search Location"
                     required
-                    value={searchTerm}
-                    onChange={handleChange}
+                    value={searchText}
+                    onChange={handleSearchTextChange}
                 // for debouncing
                 // onChange={handleChange}
 
@@ -62,12 +45,12 @@ const SearchWeather = () => {
                 </button>
                 {
                     filteredData.length > 0 && (
-                        <SearchValueModal filteredData={filteredData} searchTerm={searchTerm} />
+                        <SearchValueModal />
                     )
                 }
             </div>
         </form>
     )
-}
+};
 
 export default SearchWeather;

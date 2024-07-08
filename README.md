@@ -1,8 +1,16 @@
-# React + Vite
+#context API using by the provider.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+step-1:
+Create Context and export context
 
-Currently, two official plugins are available:
+Step-2: Create custom hook for common functionality
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+step-3:
+Create provider component
+import data from hooks
+implement the functionality here (if reqr)
+return Context with value={{}}
+
+step-4: Wrap the component by this provider
+
+step-5: get the data from context by the useContext(Context)

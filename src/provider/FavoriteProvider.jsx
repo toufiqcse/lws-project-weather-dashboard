@@ -23,6 +23,7 @@ const FavoriteProvider = ({ children }) => {
         );
         setFavorites(restFavorites);
     };
+
     return (
         <FavoriteContext.Provider
             value={{ addToFavorites, removeFromFavorites, favorites }}

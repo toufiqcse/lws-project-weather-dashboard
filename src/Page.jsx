@@ -12,6 +12,7 @@ import snowBg from './assets/backgrounds/snow.jpg';
 import sunnyBg from './assets/backgrounds/sunny.jpg';
 import thunderstormBg from './assets/backgrounds/thunderstorm.jpg';
 import winterBg from './assets/backgrounds/winter.jpg';
+import ModalProvider from './provider/ModalProvider';
 
 
 const Page = () => {
@@ -67,7 +68,11 @@ const Page = () => {
                     (<div
                         style={{ backgroundImage: `url('${climateImage}')` }}
                         className="grid place-items-center md:h-screen bg-cover bg-no-repeat">
-                        <Header />
+                        <ModalProvider>
+                            <Header />
+                        </ModalProvider>
+
+
                         <main>
                             <section>
                                 <WeatherBoard />
