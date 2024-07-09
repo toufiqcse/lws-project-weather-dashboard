@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 
 import { WeatherContext } from '../../context';
-import AddToFavorite from "./AddToFavourite/AddToFavorite";
+import SatelliteImage from './SatelliteImage/SatelliteImage';
 import WeatherContent from "./WeatherContent/WeatherContent";
 import WeatherHeadline from "./WeatherHeadline/WeatherHeadline";
 const WeatherBoard = () => {
@@ -9,17 +9,29 @@ const WeatherBoard = () => {
     console.log(loading, weatherData);
 
     return (
-        <div className="container">
-            <div
-                className="grid bg-black/30 rounded-xl backdrop-blur-md border-2 lg:border-[3px] border-white/[14%] px-4 lg:px-14 py-6 lg:py-10 min-h-[520px] max-w-[1058px] mx-auto">
-                <div className="grid md:grid-cols-2 gap-10 md:gap-6">
-                    <AddToFavorite />
-                    <WeatherHeadline />
-                    <WeatherContent />
+        <>
+            <div className=" bg-black px-4 border-b border-gray-700">
+
+                <div className="flex justify-between items-start">
+                    <div className="border-r border-gray-800 w-full">
+                        <WeatherHeadline />
+                    </div>
+                    <div className="w-full px-2 border-r border-gray-700">
+                        <SatelliteImage />
+                    </div>
+                    <div className="w-full ">
+                        {/* <AddToFavorite /> */}
+                        <WeatherContent />
+                    </div>
+                </div>
+
+
+
+                <div className="">
+                    d
                 </div>
             </div>
-
-        </div>
+        </>
     )
 }
 

@@ -1,30 +1,43 @@
-import { useContext } from 'react'
-import { ModalContext } from '../../context'
-import FavoriteModal from "./FavoriteModal/FavoriteModal"
-import Favorite from "./Favourite/Favorite"
-import Logo from "./Logo/Logo"
-import SearchWeather from "./SearchWeather/SearchWeather"
-
+import { useContext } from 'react';
+import { FaUser } from "react-icons/fa";
+import { IoIosSunny } from "react-icons/io";
+import { MdNotificationsNone } from "react-icons/md";
+import { ModalContext } from '../../context';
+import Logo from "./Logo/Logo";
+import SearchWeather from './SearchWeather/SearchWeather';
 const Header = () => {
     // declare state for handle on Off modal
-    // const [showFavModal, setShowFavModal] = useState(false);
     const { showModal, setShowModal, modalRef } = useContext(ModalContext);
 
-
-
     return (
-        <header className="md:fixed w-full top-0 z-50 bg-gradient-to-b from-black/60 to-black/0 pb-10">
-            <nav className="container flex flex-col md:flex-row items-center justify-between py-6">
-                <Logo />
-                <div className="flex items-center gap-2 md:gap-4 relative mt-2 md:mt-0">
+        <header className="w-full bg-black  pb-4 border-b border-gray-800 ">
+            <nav className="px-4 flex flex-col md:flex-row items-center justify-between  py-3">
+                <div className="flex justify-between items-center space-x-4">
+                    <Logo />
+                </div>
+                <div className="w-2/4">
                     <SearchWeather />
-                    <Favorite onShow={() => setShowModal(!showModal)} />
+                </div>
+                <div className="flex space-x-8">
+                    <button className="text-3xl text-white">
+                        <IoIosSunny />
+                        {/* <FaMoon/> */}
+                    </button>
+                    <button className="text-3xl text-white">
+                        <MdNotificationsNone />
+                    </button>
+                    <button className="border-2 border-green-300 p-3 rounded-full">
+                        <FaUser className="text-2xl text-white" />
+                    </button>
+
+                    {/* <Favorite onShow={() => setShowModal(!showModal)} />
                     {showModal && (
                         <div ref={modalRef}>
                             <FavoriteModal />
                         </div>
-                    )}
+                    )} */}
                 </div>
+
             </nav>
         </header>
     )

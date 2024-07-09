@@ -14,6 +14,8 @@ const useWeather = () => {
     time: "",
     longitude: "",
     latitude: "",
+    sunrise: "",
+    sunset: "",
   });
   const [loading, setLoading] = useState({
     state: false,
@@ -56,6 +58,8 @@ const useWeather = () => {
         cloudPercentage: data?.clouds?.all,
         windSpeed: data?.wind?.speed,
         time: data?.dt,
+        sunrise: data?.sys.sunrise,
+        sunset: data?.sys.sunset,
         longitude: longitude,
         latitude: latitude,
       };

@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
 import Header from "./components/Header/Header";
-import WeatherBoard from "./components/WeatherBoard/WeatherBoard";
 import { WeatherContext } from "./context";
 
 // import all background image
@@ -12,6 +11,9 @@ import snowBg from './assets/backgrounds/snow.jpg';
 import sunnyBg from './assets/backgrounds/sunny.jpg';
 import thunderstormBg from './assets/backgrounds/thunderstorm.jpg';
 import winterBg from './assets/backgrounds/winter.jpg';
+import Footer from './components/Footer/Footer';
+import WeatherBoard from './components/WeatherBoard/WeatherBoard';
+import WeatherDetails from './components/WeatherBoard/WeatherDetails/WeatherDetails';
 import ModalProvider from './provider/ModalProvider';
 
 
@@ -60,24 +62,22 @@ const Page = () => {
         <>
             {
                 loading.state ? (
-                    <div className="h-screen flex justify-center items-center flex-col">
+                    <div className=" flex justify-center items-center flex-col">
                         <p className="loader"></p>
                         <p className="text-xl text-black font-semibold">{loading?.message}</p>
                     </div>
                 ) :
                     (<div
-                        style={{ backgroundImage: `url('${climateImage}')` }}
-                        className="grid place-items-center md:h-screen bg-cover bg-no-repeat">
+                        // style={{ backgroundImage: `url('${climateImage}')` }}
+                        className="grid place-items-center  bg-cover bg-no-repeat">
                         <ModalProvider>
                             <Header />
                         </ModalProvider>
-
-
-                        <main>
-                            <section>
-                                <WeatherBoard />
-                            </section>
+                        <main className="w-full ">
+                            <WeatherBoard />
+                            <WeatherDetails />
                         </main>
+                        <Footer />
                     </div>)
             }
 

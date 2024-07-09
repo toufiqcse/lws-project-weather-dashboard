@@ -5,53 +5,79 @@ import maxTempIcon from "../../../assets/icons/temp-max.svg"
 import minTempIcon from "../../../assets/icons/temp-min.svg"
 import windIcon from "../../../assets/icons/wind.svg"
 import { WeatherContext } from '../../../context'
-
+import { getFormattedDateTime } from '../../../utils/date-utils'
 
 const WeatherContent = () => {
     const { weatherData } = useContext(WeatherContext);
-    const { maxTemperature, minTemperature, humidity, cloudPercentage, windSpeed, climate } = weatherData;
+    const { maxTemperature, minTemperature, humidity, cloudPercentage, windSpeed, climate, time, sunrise, sunset } = weatherData;
 
     return (
-        <div>
-            <p className="text-sm lg:text-lg font-bold uppercase mb-8 text-white">The Climate is <b> {climate}</b></p>
-            <ul className="space-y-6 lg:space-y-6 text-white">
-                <li className="text-sm lg:text-lg flex items-center justify-between space-x-4">
-                    <span>Temp max</span>
-                    <div className="inline-flex space-x-4">
-                        <p>{maxTemperature}°</p>
-                        <img src={maxTempIcon} alt="temp-max" />
+        <div className="px-4 pb-2 ">
+            {/* date time and sun rise sun Set */}
+            <div className="py-2  border-b border-gray-800 flex justify-between items-start
+            ">
+                <p className="text-sm lg:text-lg font-bold text-blue-400">
+                    {getFormattedDateTime(time, 'date', false)}-
+
+                    {getFormattedDateTime(time, 'time', false)}
+                </p>
+                <div className="flex text-white space-x-6">
+                    <div className="flex flex-col text-amber-400">
+                        <p>Sun Rise</p>
+                        <p className="font-bold">{getFormattedDateTime(sunrise, "time", false)}</p>
                     </div>
-                </li>
-                <li className="text-sm lg:text-lg flex items-center justify-between space-x-4">
-                    <span>Temp min</span>
-                    <div className="inline-flex space-x-4">
-                        <p>{minTemperature}°</p>
-                        <img src={minTempIcon} alt="temp-min" />
+                    <div className="flex flex-col text-red-400">
+                        <p>Sun Set </p>
+                        <p className="font-bold">{getFormattedDateTime(sunset, "time", false)}</p>
                     </div>
-                </li>
-                <li className="text-sm lg:text-lg flex items-center justify-between space-x-4">
-                    <span>Humadity</span>
-                    <div className="inline-flex space-x-4">
-                        <p>{humidity}%</p>
-                        <img src={humidityIcon} alt="humidity" />
+                </div>
+            </div>
+            <h3 className="text-white py-2">ToDays Forecast</h3>
+
+            <>
+                <div className=" text-white grid grid-cols-3 gap-4   ">
+
+                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Max Temp</p>
+                        <img src={maxTempIcon} alt="temp-max" className="w-[30px]" />
+                        <p className="text-xl text-yellow-400 font-medium">{Math.round(maxTemperature)}°C</p>
                     </div>
-                </li>
-                <li className="text-sm lg:text-lg flex items-center justify-between space-x-4">
-                    <span>Cloudy</span>
-                    <div className="inline-flex space-x-4">
-                        <p>{cloudPercentage}%</p>
-                        <img src={cloudIcon} alt="cloudy" />
+
+
+                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Min Temp</p>
+                        <img src={minTempIcon} alt="temp-max" className="w-[30px]" />
+                        <p className="text-xl text-yellow-400 font-medium">{Math.round(minTemperature)}°C</p>
                     </div>
-                </li>
-                <li className="text-sm lg:text-lg flex items-center justify-between space-x-4">
-                    <span>Wind</span>
-                    <div className="inline-flex space-x-4">
-                        <p>{windSpeed}km/h</p>
-                        <img src={windIcon} alt="wind" />
+
+                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Humidity</p>
+                        <img src={humidityIcon} alt="temp-max" className="w-[30px]" />
+                        <p className="text-xl text-yellow-400 font-medium">{Math.round(humidity)}</p>
                     </div>
-                </li>
-            </ul>
-        </div>
+
+                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Clouds</p>
+                        <img src={cloudIcon} alt="temp-max" className="w-[30px]" />
+                        <p className="text-xl text-yellow-400 font-medium">{Math.round(cloudPercentage)}%</p>
+                    </div>
+
+                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Wind Speed</p>
+                        <img src={windIcon} alt="temp-max" className="w-[30px]" />
+                        <p className="text-xl text-yellow-400 font-medium">{Math.round(windSpeed)} Km/h</p>
+                    </div>
+
+                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Wind Speed</p>
+                        <img src={windIcon} alt="temp-max" className="w-[30px]" />
+                        <p className="text-xl text-yellow-400 font-medium">{Math.round(windSpeed)} KMH</p>
+                    </div>
+
+
+                </div>
+            </>
+        </div >
     )
 }
 
