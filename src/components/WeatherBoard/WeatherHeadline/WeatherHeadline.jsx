@@ -41,13 +41,13 @@ const WeatherHeadline = () => {
     return (
         <>
             <div className="px-6 py-2">
-                <h2 className="bg-sky-500 bg-transparent px-3 rounded text-white text-xl font-semibold py-2 mb-4">Bangladesh Weather Report</h2>
+                <h2 className="bg-sky-500 bg-transparent px-3 rounded text-black dark:text-white text-xl font-semibold py-2 mb-4">Bangladesh Weather Report</h2>
 
                 <div className="flex flex-col justify-start items-center space-y-8">
                     <h1 className="text-xl lg:text-[50px] text-yellow-500 uppercase ">{location}</h1>
-                    <h1 className="text-[50px] lg:text-[60px] xl:text-[90px] leading-none md:mb-4 text-white">{Math.round(temperature)}°<span className="text-blue-400">C</span> </h1>
+                    <h1 className="text-[50px] lg:text-[60px] xl:text-[90px] leading-none md:mb-4 dark:text-white text-black">{Math.round(temperature)}°<span className="text-blue-400">C</span> </h1>
                     <img className="w-[10%]" src={getWeatherIcon(climate)} alt="cloud" />
-                    <p className="text-3xl lg:text-lg font-bold uppercase mb-8 text-white">  {climate}</p>
+                    <p className="text-3xl lg:text-lg font-bold uppercase mb-8 dark:text-white text-gray-600">  {climate}</p>
                 </div>
             </div>
 

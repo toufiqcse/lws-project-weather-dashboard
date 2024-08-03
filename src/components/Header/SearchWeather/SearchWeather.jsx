@@ -31,9 +31,9 @@ const SearchWeather = () => {
 
     return (
         <form action="#" onSubmit={handleSubmit} className="">
-            <div className=" flex items-center  space-x-2 py-2 px-2 outline-none   transition-all  border-white/50   border-2 border-gray-300 rounded-xl ">
+            <div className=" flex items-center  space-x-2 py-2 px-2 outline-none   transition-all  dark:border-white/50 border-black/50   border-2 dark:border-gray-300 border-gray-800  rounded-xl ">
                 <input
-                    className=" bg-transparent  placeholder:text-white text-white w-full text-xs md:text-base outline-none  "
+                    className=" bg-transparent  dark:placeholder:text-white dark:text-white text-black w-full text-xs md:text-base outline-none  "
                     type="search"
                     placeholder="Search Location"
                     required

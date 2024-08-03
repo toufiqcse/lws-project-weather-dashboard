@@ -10,25 +10,18 @@ const WeatherBoard = () => {
 
     return (
         <>
-            <div className=" bg-black px-4 border-b border-gray-700">
-
-                <div className="flex justify-between items-start">
-                    <div className="border-r border-gray-800 w-full">
+            <div className="dark:bg-darkBg bg-slate-100 px-4 border-b dark:border-gray-800 border-gray-400">
+                <div className="flex flex-wrap md:flex-nowrap justify-between items-start">
+                    <div className="border-r dark:border-gray-800 border-gray-400 w-full">
                         <WeatherHeadline />
                     </div>
-                    <div className="w-full px-2 border-r border-gray-700">
+                    <div className="w-full px-2 border-r dark:border-gray-800 border-gray-400">
                         <SatelliteImage />
                     </div>
                     <div className="w-full ">
                         {/* <AddToFavorite /> */}
                         <WeatherContent />
                     </div>
-                </div>
-
-
-
-                <div className="">
-
                 </div>
             </div>
         </>

@@ -1,12 +1,24 @@
+import { useEffect } from 'react';
 import { ThemeContext } from "../context";
-import useTheme from "../Hooks/useTheme";
-
+import useLocalStorage from '../Hooks/useLocalstorage';
 
 function ThemeProvider({ children }) {
-    const { darkMode, setDarkMode } = useTheme()
+    const [theme, setTheme] = useLocalStorage('theme', 'light');
+
+    useEffect(() => {
+        document.documentElement.className = theme;
+        // window.localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+    };
+
+
+
     return (
 
-        <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             {children}
         </ThemeContext.Provider >
     )

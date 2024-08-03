@@ -62,7 +62,7 @@ function WeatherGoogleMap() {
     return (
         <div style={{ backgroundImage: `url('${climateImage}')` }}
             className="bg-cover bg-no-repeat w-full h-[300px]">
-            <div className="bg-black/50  w-full h-full flex items-center justify-center">
+            <div className="dark:bg-darkBg/10 bg-slate-100/10  w-full h-full flex items-center justify-center">
 
                 <button onClick={() => handleGoogleMap(districtUrl)} className="text-xl py-10 text-center text-white"> Location</button>
 

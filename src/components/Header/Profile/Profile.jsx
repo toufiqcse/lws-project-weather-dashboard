@@ -10,7 +10,7 @@ function Profile({ onShowProfile }) {
                 onClick={() => showModal(onShowProfile)}
                 className="relative border-2 border-gray-500 rounded-full p-3"
             >
-                <FaUser className="text-white text-xl" />
+                <FaUser className="dark:text-white text-black text-xl" />
             </button>
             {modals[onShowProfile] && (
                 <div

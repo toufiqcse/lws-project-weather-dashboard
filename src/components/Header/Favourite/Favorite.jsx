@@ -10,8 +10,8 @@ const Favorite = ({ onShowFavorite }) => {
   return (
     <>
       <div onClick={() => showModal(onShowFavorite)} className="flex justify-start items-center space-x-2">
-        <FaHeart className="" />
-        <p className="">Favorite Location</p>
+        <FaHeart className="dark:text-black text-white" />
+        <p className="dark:text-black text-white">Favorite Location</p>
       </div>
       {modals[onShowFavorite] && (
         <div ref={(ref) => setModalRef(onShowFavorite, ref)}>

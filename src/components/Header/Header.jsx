@@ -1,8 +1,6 @@
 import { useContext } from 'react';
-import { FaMoon, FaUser } from "react-icons/fa";
-import { IoIosSunny } from "react-icons/io";
-import { MdNotificationsNone } from "react-icons/md";
-import { ModalContext, ThemeContext } from '../../context';
+import { ModalContext } from '../../context';
+import ThemeToggle from '../ThemeToggle';
 import Logo from "./Logo/Logo";
 import Notification from './Notification/Notification';
 import Profile from './Profile/Profile';
@@ -10,10 +8,10 @@ import SearchWeather from './SearchWeather/SearchWeather';
 const Header = () => {
     // declare state for handle on Off modal
     const { showModal, setShowModal, modalRef } = useContext(ModalContext);
-    const { darkMode, setDarkMode } = useContext(ThemeContext);
+
 
     return (
-        <header className="w-full   dark:bg-white bg-black pb-4 dark:border-gray-400 border-gray-800 ">
+        <header className="w-full bg-slate-100 dark:bg-darkBg pb-4  ">
             <nav className="px-4 flex  flex-col md:flex-row items-center justify-between  py-3">
                 <div className="flex w-full md:w-2/4  mb-2 md:mb-0  items-center justify-between space-x-4">
                     <Logo />
@@ -21,18 +19,12 @@ const Header = () => {
                     <div className="flex space-x-8 md:hidden">
                         <button
                             className="dark:text-white text-black  rounded-lg   inline-block"
-                            onClick={() => setDarkMode(darkMode => !darkMode)}
+
                         >
-                            {
-                                darkMode ? <IoIosSunny /> : <FaMoon />
-                            }
+                            <ThemeToggle />
                         </button>
-                        <button className="text-3xl text-white  dark:text-black">
-                            <MdNotificationsNone />
-                        </button>
-                        <button className="border-2 border-green-300 p-3 rounded-full">
-                            <FaUser className="text-2xl dark:text-white text-black " />
-                        </button>
+                        <Notification onNotificationShow="notification" />
+                        <Profile onShowProfile="profile" />
 
                         {/* <Favorite onShow={() => setShowModal(!showModal)} />
                     {showModal && (
@@ -50,11 +42,9 @@ const Header = () => {
                 <div className="md:flex space-x-8 hidden">
                     <button
                         className="text-white  rounded-lg   inline-block"
-                        onClick={() => setDarkMode(darkMode => !darkMode)}
+
                     >
-                        {
-                            darkMode ? <IoIosSunny /> : <FaMoon />
-                        }
+                        <ThemeToggle />
                     </button>
                     <Notification onNotificationShow="notification" />
                     <Profile onShowProfile="profile" />

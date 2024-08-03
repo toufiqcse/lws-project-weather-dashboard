@@ -9,10 +9,10 @@ const FavoriteModal = ({ onClose }) => {
 
     return (
         <>
-            <div className="flex items-center justify-center bg-black bg-opacity-50 fixed inset-0 z-50">
-                <div className="bg-white rounded-sm shadow-lg w-full max-w-lg px-3 py-2 space-y-2 fade-in">
+            <div className="flex items-center justify-center dark:bg-darkBg/50 bg-white bg-opacity-50 fixed inset-0 z-50">
+                <div className="dark:bg-white bg-darkBg  rounded-sm shadow-lg w-full max-w-lg px-3 py-2 space-y-2 fade-in">
                     <div className="flex justify-between items-center space-x-6">
-                        <h3 className="text-lg font-bold px-4 underline">Favorite Locations</h3>
+                        <h3 className="text-lg text-white dark:text-black font-bold px-4 underline">Favorite Locations</h3>
                         <button onClick={onClose} className="font-semibold text-3xl text-red-600 hover:text-red-600" >&times;</button>
                     </div>
                     <hr />
@@ -23,7 +23,7 @@ const FavoriteModal = ({ onClose }) => {
                                     favorites.map((fav) => (
                                         <li
                                             key={fav.location}
-                                            className="hover:bg-gray-200"
+                                            className="hover:bg-gray-200 dark:text-black text-white hover:text-black"
                                             onClick={() => setSelectedLocation({ ...fav })}>
                                             {fav.location}
                                         </li>

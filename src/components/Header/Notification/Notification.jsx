@@ -13,7 +13,7 @@ function Notification({ onNotificationShow }) {
                 onClick={() => showModal(onNotificationShow)}
                 className="relative border-2 border-gray-500 rounded-full p-3"
             >
-                <MdNotificationsNone className="text-white text-xl" />
+                <MdNotificationsNone className="dark:text-white text-black text-xl" />
             </button>
             {modals[onNotificationShow] && (
                 <div

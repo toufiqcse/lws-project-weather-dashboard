@@ -14,7 +14,7 @@ const WeatherContent = () => {
     return (
         <div className="px-4 pb-2 ">
             {/* date time and sun rise sun Set */}
-            <div className="py-2  border-b border-gray-800 flex justify-between items-start
+            <div className="py-2  border-b dark:border-gray-800 border-gray-400 flex justify-between items-start
             ">
 
                 <p className="text-sm lg:text-lg font-bold text-blue-400">
@@ -33,36 +33,36 @@ const WeatherContent = () => {
                 </div>
             </div>
 
-            <h3 className="text-white py-2">ToDays Forecast</h3>
+            <h3 className="dark:text-white text-black text-xl py-2">ToDays Forecast</h3>
             <>
                 <div className=" text-white grid grid-cols-3 gap-4   ">
 
-                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                    <div className="bg-darkBg px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
                         <p className="text-xl font-medium">Max Temp</p>
                         <img src={maxTempIcon} alt="temp-max" className="w-[30px]" />
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(maxTemperature)}°C</p>
                     </div>
 
 
-                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                    <div className="bg-darkBg px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
                         <p className="text-xl font-medium">Min Temp</p>
                         <img src={minTempIcon} alt="temp-max" className="w-[30px]" />
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(minTemperature)}°C</p>
                     </div>
 
-                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                    <div className="bg-darkBg px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
                         <p className="text-xl font-medium">Humidity</p>
                         <img src={humidityIcon} alt="temp-max" className="w-[30px]" />
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(humidity)}</p>
                     </div>
 
-                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                    <div className="bg-darkBg px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
                         <p className="text-xl font-medium">Clouds</p>
                         <img src={cloudIcon} alt="temp-max" className="w-[30px]" />
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(cloudPercentage)}%</p>
                     </div>
 
-                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                    <div className="bg-darkBg px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
                         <p className="text-xl font-medium">Wind Speed</p>
                         <img src={windIcon} alt="temp-max" className="w-[30px]" />
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(windSpeed)} Km/h</p>
