@@ -1,18 +1,21 @@
 import { useContext } from 'react';
 import searchIcon from '../../../assets/search.svg';
 import { LocationContext, SearchContext } from '../../../context';
-import getLocationByName from '../../../data/location-data';
 import SearchValueModal from '../SearchValueModal/SearchValueModal';
-
 
 const SearchWeather = () => {
     const { setSelectedLocation } = useContext(LocationContext)  //get the search result by context for updater function
-    const { searchText, handleSearchTextChange, filteredData } = useContext(SearchContext);
+    const { searchText, setSearchText, handleSearchTextChange, filteredData, matchingLocation, handleRecentSearch } = useContext(SearchContext);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, location) => {
         e.preventDefault();
-        const fetchedLocation = getLocationByName(searchText);   //pass the search text to the districtData JSON by getLocationByName()
-        setSelectedLocation({ ...fetchedLocation })
+        // const fetchedLocation = getLocationByName(searchText);   //pass the search text to the districtData JSON by getLocationByName()
+        // setSelectedLocation({ ...fetchedLocation });
+        if (searchText && !matchingLocation) {
+            alert('Search location is wrong')
+        }
+        // handleRecentSearch(location)
+        setSearchText('')
     }
 
     // For debounce
@@ -28,7 +31,7 @@ const SearchWeather = () => {
 
     return (
         <form action="#" onSubmit={handleSubmit} className="">
-            <div className=" flex items-center space-x-2 py-2 px-2  focus-within:bg-black/30 transition-all  border-white/50 focus-within:border-b-0 focus-within:rounded-md border-2 border-gray-300 rounded-xl ">
+            <div className=" flex items-center  space-x-2 py-2 px-2 outline-none   transition-all  border-white/50   border-2 border-gray-300 rounded-xl ">
                 <input
                     className=" bg-transparent  placeholder:text-white text-white w-full text-xs md:text-base outline-none  "
                     type="search"

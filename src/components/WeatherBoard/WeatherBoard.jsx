@@ -28,7 +28,7 @@ const WeatherBoard = () => {
 
 
                 <div className="">
-                    d
+
                 </div>
             </div>
         </>

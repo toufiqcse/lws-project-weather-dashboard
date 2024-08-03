@@ -9,31 +9,31 @@ import { getFormattedDateTime } from '../../../utils/date-utils'
 
 const WeatherContent = () => {
     const { weatherData } = useContext(WeatherContext);
-    const { maxTemperature, minTemperature, humidity, cloudPercentage, windSpeed, climate, time, sunrise, sunset } = weatherData;
+    const { maxTemperature, minTemperature, humidity, cloudPercentage, windSpeed, climate, time, sunrise, sunset, windGust } = weatherData;
 
     return (
         <div className="px-4 pb-2 ">
             {/* date time and sun rise sun Set */}
             <div className="py-2  border-b border-gray-800 flex justify-between items-start
             ">
+
                 <p className="text-sm lg:text-lg font-bold text-blue-400">
                     {getFormattedDateTime(time, 'date', false)}-
 
                     {getFormattedDateTime(time, 'time', false)}
                 </p>
-                <div className="flex text-white space-x-6">
-                    <div className="flex flex-col text-amber-400">
-                        <p>Sun Rise</p>
-                        <p className="font-bold">{getFormattedDateTime(sunrise, "time", false)}</p>
-                    </div>
-                    <div className="flex flex-col text-red-400">
-                        <p>Sun Set </p>
-                        <p className="font-bold">{getFormattedDateTime(sunset, "time", false)}</p>
-                    </div>
+
+                <div className="flex flex-col text-amber-400">
+                    <p>Sun Rise </p>
+                    <p className="font-bold">{getFormattedDateTime(sunrise, "time", false)}</p>
+                </div>
+                <div className="flex flex-col text-red-400">
+                    <p>Sun Set </p>
+                    <p className="font-bold">{getFormattedDateTime(sunset, "time", false)}</p>
                 </div>
             </div>
-            <h3 className="text-white py-2">ToDays Forecast</h3>
 
+            <h3 className="text-white py-2">ToDays Forecast</h3>
             <>
                 <div className=" text-white grid grid-cols-3 gap-4   ">
 
@@ -68,11 +68,11 @@ const WeatherContent = () => {
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(windSpeed)} Km/h</p>
                     </div>
 
-                    <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
-                        <p className="text-xl font-medium">Wind Speed</p>
+                    {/* <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
+                        <p className="text-xl font-medium">Wind Gust</p>
                         <img src={windIcon} alt="temp-max" className="w-[30px]" />
-                        <p className="text-xl text-yellow-400 font-medium">{Math.round(windSpeed)} KMH</p>
-                    </div>
+                        <p className="text-xl text-yellow-400 font-medium">{windGust} Km/h</p>
+                    </div> */}
 
 
                 </div>

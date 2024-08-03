@@ -1,14 +1,24 @@
 import { useContext } from 'react';
-import heartIcon from '../../../assets/heart.svg';
-import { FavoriteContext } from '../../../context';
-const Favorite = ({ onShow }) => {
+import { FaHeart } from 'react-icons/fa';
+import { FavoriteContext, ModalContext } from '../../../context';
+import FavoriteModal from '../FavoriteModal/FavoriteModal';
+const Favorite = ({ onShowFavorite }) => {
   const { favorites } = useContext(FavoriteContext);
+  const { modals, showModal, hideModal, setModalRef } = useContext(ModalContext)
+
 
   return (
-    <div className="p-2   hover:bg-black/50 cursor-pointer flex gap-1 items-center rounded-md transition-all " onClick={onShow}>
-      <img src={heartIcon} alt="favoriteIcon" />
-      <p className="text-white">{`${favorites.length}`}</p>
-    </div>
+    <>
+      <div onClick={() => showModal(onShowFavorite)} className="flex justify-start items-center space-x-2">
+        <FaHeart className="" />
+        <p className="">Favorite Location</p>
+      </div>
+      {modals[onShowFavorite] && (
+        <div ref={(ref) => setModalRef(onShowFavorite, ref)}>
+          <FavoriteModal onClose={() => hideModal(onShowFavorite)} />
+        </div>
+      )}
+    </>
   )
 }
 

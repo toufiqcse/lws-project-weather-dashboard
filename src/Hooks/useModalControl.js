@@ -1,30 +1,41 @@
 import { useEffect, useRef, useState } from "react";
 
 const useModalControl = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [modals, setModals] = useState({});
 
-  const modalRef = useRef();
+  const modalRefs = useRef({});
 
   const handleClickOutside = (event) => {
-    if (modalRef.current && !modalRef.current.contains(event.target)) {
-      setShowModal(false);
-    }
+    Object.keys(modalRefs.current).forEach((key) => {
+      if (
+        modalRefs.current[key] &&
+        !modalRefs.current[key].contains(event.target)
+      ) {
+        setModals((prev) => ({ ...prev, [key]: false })); // Close the modal if clicked outside
+      }
+    });
   };
 
   useEffect(() => {
-    if (showModal) {
-      document.addEventListener("mousedown", handleClickOutside);
+    const anyModalOpen = Object.values(modals).some((isOpen) => isOpen);
+    if (anyModalOpen) {
+      document.addEventListener("mousedown", handleClickOutside); // Add event listener when any modal is open
     } else {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside); // Remove event listener when no modals are open
     }
 
-    // Cleanup the event listener on component unmount
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside); // Cleanup event listener on component unmount
     };
-  }, [showModal]);
+  }, [modals]);
 
-  return { showModal, setShowModal, modalRef };
+  const showModal = (key) => setModals((prev) => ({ ...prev, [key]: true })); // Function to show a modal
+  const hideModal = (key) => setModals((prev) => ({ ...prev, [key]: false })); // Function to hide a modal
+  const setModalRef = (key, ref) => {
+    modalRefs.current[key] = ref; // Set the reference for a modal
+  };
+
+  return { modals, showModal, hideModal, setModalRef };
 };
 
 export default useModalControl;

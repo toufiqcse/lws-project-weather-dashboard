@@ -3,10 +3,10 @@ import useModalControl from "../Hooks/useModalControl";
 
 
 function ModalProvider({ children }) {
-    const { showModal, setShowModal, modalRef } = useModalControl();
+    const { modals, showModal, hideModal, setModalRef } = useModalControl();
     return (
 
-        <ModalContext.Provider value={{ showModal, setShowModal, modalRef }}>
+        <ModalContext.Provider value={{ modals, showModal, hideModal, setModalRef }}>
             {children}
         </ModalContext.Provider>
     )
