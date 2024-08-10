@@ -9,15 +9,24 @@ const Favorite = ({ onShowFavorite }) => {
 
   return (
     <>
-      <div onClick={() => showModal(onShowFavorite)} className="flex justify-start items-center space-x-2">
-        <FaHeart className="dark:text-black text-white" />
-        <p className="dark:text-black text-white">Favorite Location</p>
+      <div
+        onClick={() => showModal(onShowFavorite)}
+        className="flex justify-start items-center space-x-2 cursor-pointer"
+      >
+        <FaHeart className="dark:text-black text-white text-lg sm:text-base" />
+        <p className="dark:text-black text-white text-lg sm:text-base">Favorite Location</p>
       </div>
       {modals[onShowFavorite] && (
-        <div ref={(ref) => setModalRef(onShowFavorite, ref)}>
-          <FavoriteModal onClose={() => hideModal(onShowFavorite)} />
+        <div
+          ref={(ref) => setModalRef(onShowFavorite, ref)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+        >
+          <div className="bg-white dark:bg-darkBg rounded-lg shadow-lg w-full max-w-md mx-2 p-4 sm:max-w-xs">
+            <FavoriteModal onClose={() => hideModal(onShowFavorite)} />
+          </div>
         </div>
       )}
+
     </>
   )
 }

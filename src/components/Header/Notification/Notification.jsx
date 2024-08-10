@@ -1,16 +1,15 @@
 import { useContext } from 'react';
-import { MdNotificationsNone } from "react-icons/md";
+import { MdNotificationsNone } from 'react-icons/md';
 import { ModalContext } from '../../../context';
 import NotificationModal from '../NotificationModal/NotificationModal';
-
 function Notification({ onNotificationShow }) {
-    const { modals, showModal, hideModal, setModalRef } = useContext(ModalContext)
+    const { modals, toggleModal, setModalRef, hideModal, showModal } = useContext(ModalContext)
 
     return (
 
         <>
             <button
-                onClick={() => showModal(onNotificationShow)}
+                onClick={() => toggleModal(onNotificationShow)}
                 className="relative border-2 border-gray-500 rounded-full p-3"
             >
                 <MdNotificationsNone className="dark:text-white text-black text-xl" />
@@ -23,6 +22,9 @@ function Notification({ onNotificationShow }) {
                     <NotificationModal onClose={() => hideModal(onNotificationShow)} />
                 </div>
             )}
+
+
+
         </>
     )
 }

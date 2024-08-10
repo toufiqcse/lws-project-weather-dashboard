@@ -46,7 +46,8 @@ const Header = () => {
                     >
                         <ThemeToggle />
                     </button>
-                    <Notification onNotificationShow="notification" />
+
+                    <Notification onNotificationShow="notifications" />
                     <Profile onShowProfile="profile" />
                 </div>
 

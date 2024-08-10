@@ -17,7 +17,7 @@ const SearchValueModal = () => {
 
     return (
         <div className="">
-            <div className="flex justify-center items-start absolute md:top-[60px] top-[120px] left-[45%]  w-[300px]">
+            <div className="flex justify-center items-start absolute md:top-[60px] top-[120px] md:left-[45%] right-[0%] md:w-[300px] w-[280px]">
                 <div className="bg-white p-3 rounded-md shadow-lg  overflow-y-auto h-[300px] custom-scrollbar w-full">
                     <>
                         <h3 className="text-lg font-bold px-4 underline">Location</h3>

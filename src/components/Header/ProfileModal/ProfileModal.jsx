@@ -16,7 +16,7 @@ function ProfileModal({ onClose }) {
                                 <FaHeart className="dark:text-black text-white" />
                                 <p className="dark:text-black text-white">Appearance</p>
                             </li>
-                            <li className="  cursor-pointer select-none py-2 px-2 dark:hover:bg-gray-200 hover:bg-gray-400">
+                            <li className="  cursor-pointer  py-2 px-2 dark:hover:bg-gray-200 hover:bg-gray-400">
                                 <Favorite onShowFavorite="favorite" />
                             </li>
                         </ul>
