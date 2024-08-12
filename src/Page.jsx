@@ -25,12 +25,12 @@ const Page = () => {
                             isOnline ?
                                 <>
                                     <p className="loader"></p>
-                                    <p className="text-xl text-white dark:text-black  font-semibold">
+                                    <p className="text-xl text-black dark:text-black  font-semibold">
                                         {loading?.message}
                                     </p>
                                 </>
                                 :
-                                <p className="dark:text-red-500 text-black items-center font-semibold text-xl text-center ">Please check your network status</p>
+                                <p className="dark:text-red-500 text-red-500 items-center font-semibold text-xl text-center ">Please check your network status</p>
                         }
 
                     </div>

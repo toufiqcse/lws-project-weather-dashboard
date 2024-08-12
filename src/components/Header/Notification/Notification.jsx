@@ -9,7 +9,7 @@ function Notification({ onNotificationShow }) {
 
         <>
             <button
-                onClick={() => toggleModal(onNotificationShow)}
+                onClick={() => showModal(onNotificationShow)}
                 className="relative border-2 border-gray-500 rounded-full p-3"
             >
                 <MdNotificationsNone className="dark:text-white text-black text-xl" />

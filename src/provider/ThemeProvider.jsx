@@ -7,7 +7,6 @@ function ThemeProvider({ children }) {
 
     useEffect(() => {
         document.documentElement.className = theme;
-        // window.localStorage.setItem('theme', theme);
     }, [theme]);
 
     const toggleTheme = () => {
