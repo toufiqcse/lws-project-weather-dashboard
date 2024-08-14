@@ -4,6 +4,7 @@ import { MdOutlineWbSunny } from "react-icons/md";
 import { ThemeContext } from '../context';
 
 const ThemeToggle = () => {
+    // import from context api
     const { theme, toggleTheme } = useContext(ThemeContext);
 
     return (

@@ -67,14 +67,6 @@ const WeatherContent = () => {
                         <img src={windIcon} alt="temp-max" className="w-[30px]" />
                         <p className="text-xl text-yellow-400 font-medium">{Math.round(windSpeed)} Km/h</p>
                     </div>
-
-                    {/* <div className="bg-gray-700 px-3 py-2 rounded-md text-sm lg:text-lg flex items-center flex-col space-y-2">
-                        <p className="text-xl font-medium">Wind Gust</p>
-                        <img src={windIcon} alt="temp-max" className="w-[30px]" />
-                        <p className="text-xl text-yellow-400 font-medium">{windGust} Km/h</p>
-                    </div> */}
-
-
                 </div>
             </>
         </div >

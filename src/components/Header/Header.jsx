@@ -5,11 +5,10 @@ import Logo from "./Logo/Logo";
 import Notification from './Notification/Notification';
 import Profile from './Profile/Profile';
 import SearchWeather from './SearchWeather/SearchWeather';
+
 const Header = () => {
-    // declare state for handle on Off modal
+    // declare state for handle on Off modal from context API
     const { showModal, setShowModal, modalRef } = useContext(ModalContext);
-
-
     return (
         <header className="w-full bg-slate-100 dark:bg-darkBg pb-4  ">
             <nav className="px-4 flex  flex-col md:flex-row items-center justify-between  py-3">
@@ -38,7 +37,6 @@ const Header = () => {
                 <div className="md:w-2/4 w-full py-2 md:py-0 md:mr-6">
                     <SearchWeather />
                 </div>
-
                 <div className="md:flex space-x-8 hidden">
                     <button
                         className="text-white  rounded-lg   inline-block"
@@ -46,14 +44,12 @@ const Header = () => {
                     >
                         <ThemeToggle />
                     </button>
-
                     <Notification onNotificationShow="notifications" />
                     <Profile onShowProfile="profile" />
                 </div>
-
             </nav>
         </header>
     )
 }
 
-export default Header
+export default Header;

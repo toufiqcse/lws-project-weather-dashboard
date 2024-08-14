@@ -29,6 +29,12 @@
   height: 120px;
   animation: spin 2s linear infinite;
 }
+.loader-div {
+  position: absolute; /* or absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 @keyframes spin {
   0% {

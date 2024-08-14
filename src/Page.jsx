@@ -17,26 +17,25 @@ const Page = () => {
     const isOnline = useOnlineStatus();
     console.log(isOnline);
     return (
-        <div>
+        <>
             {
                 loading.state ? (
                     <div className=" flex justify-center items-center flex-col">
                         {
                             isOnline ?
-                                <>
+                                <div className='flex justify-center items-center flex-col loader-div'>
                                     <p className="loader"></p>
                                     <p className="text-xl text-black dark:text-black  font-semibold">
                                         {loading?.message}
                                     </p>
-                                </>
+                                </div>
                                 :
-                                <p className="dark:text-red-500 text-red-500 items-center font-semibold text-xl text-center ">Please check your network status</p>
+                                <p className="dark:text-red-500 text-red-500 items-center font-semibold text-xl text-center loader-div">Please check your network status</p>
                         }
 
                     </div>
                 ) :
                     (<div
-                        // style={{ backgroundImage: `url('${climateImage}')` }}
                         className={`grid place-items-center  bg-cover bg-no-repeat
                         `}>
                         <ModalProvider>
@@ -49,7 +48,7 @@ const Page = () => {
                         <Footer />
                     </div>)
             }
-        </div >
+        </ >
     )
 }
 

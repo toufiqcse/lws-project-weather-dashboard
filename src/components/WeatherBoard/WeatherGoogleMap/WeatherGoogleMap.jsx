@@ -10,8 +10,9 @@ import sunnyBg from '../../../assets/backgrounds/sunny.jpg';
 import thunderstormBg from '../../../assets/backgrounds/thunderstorm.jpg';
 import winterBg from '../../../assets/backgrounds/winter.jpg';
 import { WeatherContext } from '../../../context/index';
-import { districtUrl } from '../../../utils/exported';
+import { districtUrls } from '../../../utils/exported';
 import getFilteredUrl from '../../../utils/filteredUrl';
+
 function WeatherGoogleMap() {
 
     const { weatherData } = useContext(WeatherContext);
@@ -64,9 +65,7 @@ function WeatherGoogleMap() {
             className="bg-cover bg-no-repeat w-full h-[300px]">
             <div className="dark:bg-darkBg/10 bg-slate-100/10  w-full h-full flex items-center justify-center">
 
-                <button onClick={() => handleGoogleMap(districtUrl)} className="text-xl py-10 text-center text-white"> Location</button>
-
-
+                <button onClick={() => getFilteredUrl(districtUrls)} className="text-xl py-10 text-center text-white"> Location</button>
             </div>
 
         </div>

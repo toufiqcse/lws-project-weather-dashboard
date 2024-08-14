@@ -9,8 +9,6 @@ const SearchWeather = () => {
 
     const handleSubmit = (e, location) => {
         e.preventDefault();
-        // const fetchedLocation = getLocationByName(searchText);   //pass the search text to the districtData JSON by getLocationByName()
-        // setSelectedLocation({ ...fetchedLocation });
         if (searchText && !matchingLocation) {
             alert('Search location is wrong')
         }

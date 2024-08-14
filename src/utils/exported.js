@@ -1,8 +1,13 @@
 import districtData from "../../public/data";
 
-const districtUrl = districtData.reduce((acc, district) => {
-  acc[district.id] = district.url;
-  return acc;
+// Reduce the districtData array to an object containing only the URLs, keyed by district ID
+const districtUrls = districtData.reduce((accumulator, district) => {
+  accumulator[district.id] = district.url;
+  return accumulator;
 }, {});
-export { districtUrl };
-console.log(districtUrl);
+
+// Export the districtUrls object
+export { districtUrls };
+
+// Optional: Log the URLs to the console
+console.log(Object.values(districtUrls));
